@@ -3,13 +3,11 @@ package pl.com.bard.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.com.bard.petclinic.model.Owner;
-import pl.com.bard.petclinic.model.Pet;
-import pl.com.bard.petclinic.model.PetType;
+
 import pl.com.bard.petclinic.model.Vet;
 import pl.com.bard.petclinic.services.OwnerService;
 import pl.com.bard.petclinic.services.VetService;
-import pl.com.bard.petclinic.services.map.OwnerServiceMap;
-import pl.com.bard.petclinic.services.map.VetServiceMap;
+
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -18,11 +16,11 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
 
 
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
-
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
+
 
     @Override
     public void run(String... args) throws Exception {
