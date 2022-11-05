@@ -2,11 +2,20 @@ package pl.com.bard.petclinic.model;
 
 import java.time.LocalDate;
 
-public class Pet extends BaseEntity{
+public class Pet extends BaseEntity {
 
+    private String petName;
     private PetType petType;
     private Owner owner;
     private LocalDate birthDate;
+
+    public String getPetName() {
+        return petName;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
 
     public PetType getPetType() {
         return petType;
