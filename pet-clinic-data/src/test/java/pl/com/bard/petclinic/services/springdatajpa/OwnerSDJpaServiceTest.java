@@ -90,7 +90,7 @@ class OwnerSDJpaServiceTest {
         when(ownerRepository.save(any())).thenReturn(returnOwner);
         Owner smith = service.save(returnOwner);
         verify(ownerRepository, times(1)).save(any());
-        assertAll("Should return owner by last name",
+        assertAll("Should return owner object found by last name",
                 () -> assertNotNull(smith),
                 () -> assertEquals(lastName, smith.getLastName()),
                 () -> assertEquals(ownerId, smith.getId())
