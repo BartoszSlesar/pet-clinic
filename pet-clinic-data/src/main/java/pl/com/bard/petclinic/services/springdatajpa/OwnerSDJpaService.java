@@ -5,7 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.com.bard.petclinic.model.Owner;
 import pl.com.bard.petclinic.repositories.OwnerRepository;
+import pl.com.bard.petclinic.repositories.PetRepository;
+import pl.com.bard.petclinic.repositories.PetTypeRepository;
 import pl.com.bard.petclinic.services.OwnerService;
+import pl.com.bard.petclinic.services.PetTypeService;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -16,9 +19,13 @@ import java.util.Set;
 public class OwnerSDJpaService implements OwnerService {
 
     private final OwnerRepository ownerRepository;
+    private final PetRepository petRepository;
+    private final PetTypeRepository petTypeRepository;
 
-    public OwnerSDJpaService(OwnerRepository ownerRepository) {
+    public OwnerSDJpaService(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
+        this.petRepository = petRepository;
+        this.petTypeRepository = petTypeRepository;
     }
 
     @Override
