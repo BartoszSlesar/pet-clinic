@@ -1,5 +1,6 @@
 package pl.com.bard.petclinic.controllers;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +20,7 @@ import pl.com.bard.petclinic.services.OwnerService;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -80,5 +81,17 @@ class OwnerControllerTest {
                 .andExpect(view().name("notImplemented"));
 
         verifyNoInteractions(ownerService);
+    }
+
+    @Test
+    void displayOwner() throws Exception {
+        Owner owner = Owner.builder().id(1L).lastName("Smith").build();
+        when(ownerService.findById(anyLong())).thenReturn(owner);
+
+        mockMvc.perform(get("/owners/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownerDetails"))
+                .andExpect(model().attribute("owner", hasProperty("id", is(1L))));
+
     }
 }
