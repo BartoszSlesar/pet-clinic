@@ -1,5 +1,6 @@
 package pl.com.bard.petclinic.services.map;
 
+import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.com.bard.petclinic.model.Owner;
@@ -8,6 +9,7 @@ import pl.com.bard.petclinic.services.OwnerService;
 import pl.com.bard.petclinic.services.PetService;
 import pl.com.bard.petclinic.services.PetTypeService;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -72,5 +74,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner findByLastName(String lastName) {
         return this.findAll().stream().filter(e -> e.getLastName().equalsIgnoreCase(lastName)).findFirst().orElse(null);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String latName) {
+        throw new NotYetImplementedException("not yet implemented for map service");
     }
 }
