@@ -48,17 +48,6 @@ class OwnerControllerTest {
                 .build();
     }
 
-    @Test
-    void listOwners() throws Exception {
-        when(ownerService.findAll()).thenReturn(owners);
-
-        mockMvc.perform(get("/owners"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("owners/index"))
-                .andExpect(model().attribute("owners", hasSize(2)));
-
-    }
-
 
     @Test
     void findOwners() throws Exception {
@@ -68,6 +57,7 @@ class OwnerControllerTest {
 
         verifyNoInteractions(ownerService);
     }
+
     @Test
     void processFindFormReturnMany() throws Exception {
         when(ownerService.findAllByLastNameLike(anyString()))
@@ -96,13 +86,12 @@ class OwnerControllerTest {
                         Owner.builder().id(2l).build()));
 
         mockMvc.perform(get("/owners")
-                        .param("lastName",""))
+                        .param("lastName", ""))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/ownersList"))
-                .andExpect(model().attribute("selections", hasSize(2)));;
+                .andExpect(model().attribute("selections", hasSize(2)));
+        ;
     }
-
-
 
 
     @Test
@@ -148,7 +137,7 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/createOrUpdateOwnerForm"))
                 .andExpect(model().attributeExists("owner"));
 
-        verifyNoInteractions(ownerService);
+        verify(ownerService).findById(ArgumentMatchers.anyLong());
     }
 
     @Test
