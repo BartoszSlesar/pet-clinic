@@ -16,6 +16,8 @@ import pl.com.bard.petclinic.services.PetService;
 import pl.com.bard.petclinic.services.PetTypeService;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
 import java.util.Collection;
 
 @Controller
@@ -37,6 +39,12 @@ public class PetController {
     @InitBinder("owner")
     public void initOwnerBinder(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
+//        dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+//            @Override
+//            public void setAsText(String text) throws IllegalArgumentException {
+//                setValue(LocalDate.parse(text));
+//            }
+//        });
     }
 
     @ModelAttribute("types")
@@ -60,14 +68,16 @@ public class PetController {
 
     @PostMapping("/pets/new")
     public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model) {
-        if (StringUtils.hasLength(pet.getPetName()) && pet.isNew() && owner.getPet(pet.getPetName(), true) != null){
+        if (StringUtils.hasLength(pet.getPetName()) && pet.isNew() && owner.getPet(pet.getPetName(), true) != null) {
             result.rejectValue("name", "duplicate", "already exists");
         }
         owner.getPets().add(pet);
         if (result.hasErrors()) {
+            pet.setOwner(owner);
             model.put("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
+            pet.setOwner(owner);
             petService.save(pet);
 
             return "redirect:/owners/" + owner.getId();

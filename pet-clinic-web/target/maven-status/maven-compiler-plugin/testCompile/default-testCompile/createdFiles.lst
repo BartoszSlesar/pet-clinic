@@ -1,0 +1,4 @@
+pl/com/bard/petclinic/PetClinicApplicationTests.class
+pl/com/bard/petclinic/controllers/OwnerControllerTest.class
+pl/com/bard/petclinic/controllers/VisitControllerTest.class
+pl/com/bard/petclinic/controllers/PetControllerTest.class

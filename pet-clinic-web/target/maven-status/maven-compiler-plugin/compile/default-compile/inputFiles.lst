@@ -1,0 +1,9 @@
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/PetClinicApplication.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/bootstrap/DataLoader.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/controllers/OwnerController.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/controllers/IndexController.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/controllers/MyErrorController.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/formatters/PetTypeFormatter.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/controllers/VisitController.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/controllers/PetController.java
+/home/bard/projects/pet-clinic/pet-clinic-web/src/main/java/pl/com/bard/petclinic/controllers/VetController.java

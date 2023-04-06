@@ -1,0 +1,10 @@
+pl/com/bard/petclinic/formatters/PetTypeFormatter.class
+pl/com/bard/petclinic/controllers/VisitController$1.class
+pl/com/bard/petclinic/controllers/IndexController.class
+pl/com/bard/petclinic/controllers/VisitController.class
+pl/com/bard/petclinic/PetClinicApplication.class
+pl/com/bard/petclinic/controllers/OwnerController.class
+pl/com/bard/petclinic/controllers/MyErrorController.class
+pl/com/bard/petclinic/controllers/PetController.class
+pl/com/bard/petclinic/bootstrap/DataLoader.class
+pl/com/bard/petclinic/controllers/VetController.class
